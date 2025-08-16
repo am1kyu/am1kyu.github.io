@@ -35,7 +35,8 @@
     h1 {
       font-size: 3rem;
       text-align: center;
-      margin-bottom: 2rem;
+      /* Reduced bottom margin */
+      margin-bottom: 0rem;
     }
 
     h2 {
@@ -85,7 +86,8 @@
 
     .logo-placeholder {
       display: block;
-      margin: 0 auto 1rem;
+      /* Removed bottom margin */
+      margin: 0 auto;
       width: 150px;
       height: 150px;
       border-radius: 50%;
@@ -103,13 +105,27 @@
       align-items: center;
       gap: 0.5rem;
     }
+
+    .gif-container {
+      display: flex;
+      justify-content: center;
+      /* Horizontally centers the GIFs */
+      flex-wrap: wrap;
+      /* Allows GIFs to wrap to the next line on smaller screens */
+      gap: 1rem;
+      /* Adds some space between the GIFs */
+      margin-top: 3rem;
+      /* Adds space above the GIFs */
+    }
   </style>
 </head>
 
 <body>
+  <!-- --- HEADER HTML HAS BEEN REARRANGED --- -->
   <header class="header-logo">
-    <img src="logo2.png" alt="Ami Logo" class="logo-placeholder" />
     <h1>[ AMi ]</h1>
+    <img src="logo2.png" alt="Ami Logo" class="logo-placeholder"
+      onerror="this.onerror=null;this.src='https://placehold.co/150x150/7b68ee/FFFFFF?text=Logo';" />
   </header>
 
   <main>
@@ -236,13 +252,22 @@
         </a>
       </div>
     </section>
-    <img src="./ethicalhacker.gif" width="200" />
-    <img src="./cmmd.gif" , width=200 />
 
-    <img src="./night.gif" , width=200 />
-    <img src="./tabs.gif" , width=200 />
-    <img src="./datadefender.gif" , width=200 />
-    <img src="./waters.gif" , width=200 />
+    <div class="gif-container">
+      <img src="./ethicalhacker.gif" width="200" alt="Ethical Hacker GIF"
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+      <img src="./cmmd.gif" width="200" alt="Command Line GIF"
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+      <img src="./night.gif" width="200" alt="Night GIF"
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+      <img src="./tabs.gif" width="200" alt="Tabs GIF"
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+      <img src="./datadefender.gif" width="200" alt="Data Defender GIF"
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+      <img src="./waters.gif" width="200" alt="Waters GIF"
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+    </div>
+
   </main>
 
   <footer style="
