@@ -11,163 +11,173 @@
     rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* --- Root Variables for a Clean, Minimalist Theme --- */
+    /* --- Root Variables for easy theme management --- */
     :root {
-      --bg-color: #1a1b1e;
-      /* Deep charcoal from cat/laptop */
-      --panel-bg-color: #25262a;
-      /* Slightly lighter dark grey */
-      --text-color: #e1e1d6;
-      /* Creamy off-white from helmet */
-      --text-secondary-color: #a0a09c;
-      /* Muted text for less emphasis */
-      --primary-accent: #65c8c6;
-      /* Muted teal from hair/logo */
-      --secondary-accent: #e6c35c;
-      /* Golden yellow from eyes for highlights */
-      --border-color: rgba(101, 200, 198, 0.2);
-      /* Subtle border color */
-      --font-heading: 'VT323', monospace;
-      --font-body: 'Roboto Mono', monospace;
+      --bg-color: #0a0a14;
+      /* Deep space blue */
+      --text-color: #dcdcdc;
+      --accent-color: #00f0ff;
+      /* Bright cyan */
+      --glow-color: rgba(0, 240, 255, 0.7);
+      /* Increased opacity slightly for better glow */
+      --panel-bg-color: rgba(20, 30, 50, 0.3);
+      --panel-border-color: rgba(0, 240, 255, 0.3);
     }
 
-    /* --- General Body Styling --- */
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: var(--font-body);
-      line-height: 1.7;
+      font-family: 'Roboto Mono', monospace;
+      line-height: 1.8;
       max-width: 800px;
       margin: 0 auto;
       padding: 2rem;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* --- Clean & Clear Typography --- */
+    /* --- Star Background --- */
+    #stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      /* Make it non-interactive */
+      z-index: 0;
+      /* Place it behind content */
+    }
+
+    .star {
+      position: absolute;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--glow-color);
+      animation: star-twinkle 2s infinite ease-in-out;
+    }
+
+    /* --- Content Layering --- */
+    /* Ensure header and main content appear above the stars */
+    header,
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+
+    /* --- Typography with Glow Effect --- */
     h1,
     h2,
     h3,
     h4 {
-      font-family: var(--font-heading);
+      font-family: 'VT323', monospace;
+      color: var(--accent-color);
+      text-shadow: 0 0 4px var(--glow-color), 0 0 8px var(--glow-color);
       margin-top: 2rem;
       margin-bottom: 1rem;
-      font-weight: 400;
     }
 
     h1 {
       font-size: 3.5rem;
       text-align: center;
-      color: var(--primary-accent);
-      /* Changed back to primary accent color */
-      margin-top: 1rem;
       margin-bottom: 0;
+      /* Removed bottom margin */
+      line-height: 1;
+      /* Added to remove extra space below text */
+      position: relative;
+      animation: flicker 5s infinite linear;
     }
+
+
 
     h2 {
       font-size: 2.5rem;
-      color: var(--primary-accent);
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
     }
 
     h3 {
       font-size: 1.8rem;
-      color: var(--secondary-accent);
     }
 
     h4 {
       font-size: 1.2rem;
-      color: var(--primary-accent);
+      color: var(--text-color);
       opacity: 0.8;
     }
 
-    p {
-      color: var(--text-secondary-color);
-      margin-bottom: 1rem;
-    }
-
     a {
-      color: var(--primary-accent);
+      color: var(--accent-color);
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 4px var(--glow-color);
     }
 
     a:hover {
-      color: var(--secondary-accent);
+      text-decoration: none;
+      text-shadow: 0 0 8px var(--glow-color), 0 0 16px var(--glow-color);
+      filter: brightness(1.2);
     }
 
-    strong {
-      color: var(--text-color);
-      font-weight: 700;
-    }
-
-    /* --- List Styling --- */
     ul {
-      list-style-type: none;
-      padding-left: 0;
+      list-style-type: '>> ';
+      padding-left: 1.5rem;
+    }
+
+    ul li::marker {
+      color: var(--accent-color);
+      text-shadow: 0 0 4px var(--glow-color);
     }
 
     li {
-      margin-bottom: 0.75rem;
-      padding-left: 1.5rem;
-      position: relative;
-      color: var(--text-secondary-color);
+      margin-bottom: 0.5rem;
     }
 
-    li::before {
-      content: '>';
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--secondary-accent);
-      font-weight: 700;
-    }
-
-    /* --- Header and Logo --- */
-    .header-container {
+    /* --- Header and Logo Styling --- */
+    .header-logo {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
     }
 
-    .logo {
+    .logo-placeholder {
       display: block;
-      margin: 0 auto 1.5rem auto;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid var(--border-color);
-      transition: border-color 0.3s ease, transform 0.3s ease;
+      margin: 0 auto;
+      /* Removed top margin */
+      width: 180px;
+      /* Increased size */
+      height: 180px;
+      /* Increased size */
+      transition: all 0.3s ease;
+      /* Layered drop-shadow: first for border, second for glow */
+      filter: drop-shadow(0 0 2px var(--accent-color)) drop-shadow(0 0 8px var(--glow-color));
     }
 
-    .logo:hover {
-      border-color: var(--primary-accent);
+    .logo-placeholder:hover {
       transform: scale(1.05);
+      /* Intensify the effect on hover */
+      filter: drop-shadow(0 0 3px var(--accent-color)) drop-shadow(0 0 12px var(--glow-color));
     }
 
-    /* --- Minimalist Content Sections --- */
+    /* --- Content Sections as Holographic Panels --- */
     section {
       background-color: var(--panel-bg-color);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--panel-border-color);
       padding: 1.5rem 2rem;
-      border-radius: 8px;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+      transition: all 0.3s ease;
     }
 
     section:hover {
-      border-color: var(--primary-accent);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
     }
 
     /* --- Contact Info --- */
     .contact-info {
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 2rem;
       margin-top: 1.5rem;
-      flex-wrap: wrap;
     }
 
     .contact-info a {
@@ -175,8 +185,26 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 1.1rem;
-      font-family: var(--font-body);
     }
+
+    /* --- Custom SVG Icon Styling --- */
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent-color);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 3px var(--glow-color));
+    }
+
+    .contact-info a:hover .contact-icon {
+      filter: drop-shadow(0 0 6px var(--glow-color));
+      transform: scale(1.1);
+    }
+
 
     /* --- GIF Container --- */
     .gif-container {
@@ -189,169 +217,189 @@
 
     .gif-container img {
       border-radius: 8px;
-      border: 1px solid var(--border-color);
-      opacity: 0.5;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      max-width: 150px;
+      border: 1px solid var(--panel-border-color);
+      opacity: 0.7;
+      transition: all 0.3s ease;
     }
 
     .gif-container img:hover {
       opacity: 1;
       transform: scale(1.05);
+      border-color: var(--accent-color);
     }
 
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: var(--text-secondary-color);
+    /* --- Animations --- */
+    @keyframes flicker {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.9;
+      }
+
+      52% {
+        opacity: 1;
+      }
+
+      54% {
+        opacity: 0.8;
+      }
+
+      56% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes star-twinkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- --- HEADER: Logo first, then name --- -->
-  <header class="header-container">
-    <!-- The image source is updated to the file you provided -->
-    <img src="Antonina.png" alt="Ami Logo" class="logo"
-      onerror="this.onerror=null;this.src='https://placehold.co/150x150/1a1b1e/e1e1d6?text=AMI';" />
+  <!-- Container for the star background -->
+  <div id="stars-container"></div>
+
+  <!-- --- HEADER: Now with character logo --- -->
+  <header class="header-logo">
     <h1>[ AMi ]</h1>
+    <!-- Changed src to logo2.png and added a fallback -->
+    <img src="logo3.png" alt="Ami Logo" class="logo-placeholder"
+      onerror="this.onerror=null;this.src='https://placehold.co/180x180/0a0a14/ffffff?text=LOGO';" />
   </header>
 
   <main>
     <!-- About Section -->
     <section id="about">
-      <h2>whoami</h2>
+      <h2>About Me</h2>
       <p>
-        Hi, I'm Ami. I started in tech with a simple question: 'How does this work?' That curiosity led me from IT
-        support to a passion for cybersecurity. I enjoy breaking down systems to understand them, and then building them
-        back stronger.
+        Hello! I'm Ami, a cybersecurity student with a
+        strong foundation in IT support and project
+        management principles. My journey into tech
+        started with a curiosity for how things work,
+        which quickly evolved into a passion for securing
+        the systems that power our world.
       </p>
       <p>
-        With a foundation in IT and project management, I'm ready to take on new challenges and help secure the digital
-        world.
+        Through my certifications, I've built a solid
+        technical skill set and a strategic understanding
+        of IT service management. I am now channeling this
+        diverse background into cybersecurity and actively
+        seeking opportunities to apply my skills in a
+        real-world setting.
       </p>
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications">
-      <h2>certifications</h2>
+    <section id="certs">
+      <h2>Certifications</h2>
       <ul>
-        <li>
-          <strong>CompTIA A+:</strong>
-          Core hardware and software technologies for IT
-          support roles.
-        </li>
-        <li>
-          <strong>CompTIA Project+:</strong>
-          Fundamentals of project management, covering the
-          entire project life cycle.
-        </li>
-        <li>
-          <strong>ITIL 4 Foundation:</strong>
-          Best practices for IT service management and
-          value co-creation.
-        </li>
-        <li>
-          <strong>Google IT Support:</strong>
-          In-demand skills in IT support, including
-          troubleshooting and customer service.
-        </li>
+        <li>CompTIA A+</li>
+        <li>CompTIA Project+</li>
+        <li>ITIL® 4 Foundation</li>
+        <li>Google IT Support</li>
       </ul>
     </section>
 
     <!-- Projects Section -->
     <section id="projects">
-      <h2>projects</h2>
-      <h3>Network Honeypot Implementation</h3>
+      <h2>Projects</h2>
+      <h3>Home Lab Network Segmentation</h3>
       <p>
-        Designed and deployed a low-interaction honeypot
-        to study common attack vectors and methodologies
-        used by malicious actors. The project aimed to
-        capture and analyze unauthorized access attempts
-        to understand current threat landscapes.
+        Designed and implemented a segmented home network using VLANs to
+        isolate IoT devices, a personal server, and guest access,
+        enhancing security and network management.
       </p>
-      <h4>// Key Features</h4>
-      <ul>
-        <li>
-          Emulated common services (SSH, FTP, Telnet) to
-          attract attackers.
-        </li>
-        <li>
-          Logged all interaction data, including IP
-          addresses, commands used, and payloads.
-        </li>
-        <li>
-          Configured firewall rules to safely isolate the
-          honeypot.
-        </li>
-        <li>
-          Analyzed collected data to identify patterns and
-          popular attack tools.
-        </li>
-      </ul>
-      <h4>// Technologies Used</h4>
+      <h3>Threat Analysis Report</h3>
       <p>
-        Python, Linux (Ubuntu), Docker, Wireshark, Log
-        analysis tools
-      </p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2>skills</h2>
-      <p>
-        Network Security | Threat Analysis | Python
-        Scripting | Linux/Unix | Incident Response |
-        Vulnerability Assessment | Firewall Configuration
-        | IT Support | Project Management | SIEM Tools |
-        Cloud Security Basics | Cryptography Concepts
+        Conducted an in-depth analysis of the Log4j vulnerability,
+        detailing its mechanism, potential impact, and mitigation
+        strategies for different environments.
       </p>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-      <h2>connect</h2>
-      <p style="text-align: center">
-        I'm always open to discussing new opportunities.
-        Feel free to reach out.
-      </p>
+      <h2>Contact</h2>
+      <p>Let's connect and build a more secure future together.</p>
       <div class="contact-info">
-        <a href="mailto:ami.cheri00@gmail.com">
-          <i data-lucide="mail"></i>
+        <a href="mailto:youremail@example.com">
+          <!-- Custom SVG Email Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="contact-icon">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
           <span>Email</span>
         </a>
-        <a href="https://github.com/am1kyu" target="_blank" rel="noopener noreferrer">
-          <i data-lucide="github"></i>
+        <a href="https://github.com/yourprofile" target="_blank">
+          <!-- Custom SVG GitHub Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="contact-icon">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
           <span>GitHub</span>
         </a>
       </div>
     </section>
-
-    <div class="gif-container">
-      <img src="./ethicalhacker.gif" alt="Ethical Hacker GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1b1e/e1e1d6?text=GIF';" />
-      <img src="./cmmd.gif" alt="Command Line GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1b1e/e1e1d6?text=GIF';" />
-      <img src="./night.gif" alt="Night GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1b1e/e1e1d6?text=GIF';" />
-      <img src="./tabs.gif" alt="Tabs GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1b1e/e1e1d6?text=GIF';" />
-      <img src="./datadefender.gif" alt="Data Defender GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1b1e/e1e1d6?text=GIF';" />
-      <img src="./waters.gif" alt="Waters GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1b1e/e1e1d6?text=GIF';" />
-    </div>
-
   </main>
 
-  <footer>
-    <p>&copy; 2024 Ami. All Rights Reserved.</p>
-  </footer>
+  <!-- GIF Decoration -->
+  <div class="gif-container">
+    <img
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2ZqY3M3d2Z5ZzB6Z2w0ZzVzN2ZzN2Y3d3c3d3c3d3c3d3c3d3c/9J7tdYltzXIYg/giphy.gif"
+      alt="Retro computer interface" width="200" />
+    <img
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2ZqY3M3d2Z5ZzB6Z2w0ZzVzN2ZzN2Y3d3c3d3c3d3c3d3c3d3c/13VbE0V23i3e12/giphy.gif"
+      alt="Hacker typing code" width="200" />
+  </div>
 
   <script>
+    // Initialize Lucide icons
     lucide.createIcons();
+
+    // Dynamically create the twinkling star background
+    document.addEventListener('DOMContentLoaded', function () {
+      const container = document.getElementById('stars-container');
+      if (!container) return;
+      const numStars = 150; // Adjust number of stars here
+
+      for (let i = 0; i < numStars; i++) {
+        let star = document.createElement('div');
+        star.className = 'star';
+
+        // Random size for a "pixelated" look (1px, 2px, or 3px)
+        let size = Math.floor(Math.random() * 3) + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+
+        // Random position across the viewport
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+
+        // Random animation delay and duration for a natural twinkling effect
+        star.style.animationDelay = Math.random() * 5 + 's';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Duration between 2s and 5s
+
+        container.appendChild(star);
+      }
+    });
   </script>
 </body>
 
