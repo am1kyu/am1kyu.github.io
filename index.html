@@ -11,10 +11,29 @@
     rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
+    /* --- Root Variables for easy theme management (Aesthetic Palette) --- */
+    :root {
+      --bg-color: #18191A;
+      /* Dark charcoal from cat/laptop */
+      --text-color: #E1E1D6;
+      /* Creamy off-white from helmet */
+      --primary-accent: #65C8C6;
+      /* Muted teal from hair/logo */
+      --primary-glow: rgba(101, 200, 198, 0.6);
+      --secondary-accent: #E6C35C;
+      /* Golden yellow from eyes */
+      --secondary-glow: rgba(230, 195, 92, 0.6);
+      --tertiary-accent: #93D9D7;
+      /* Lighter, softer teal */
+      --panel-bg-color: rgba(40, 42, 43, 0.4);
+      /* Semi-transparent dark panel */
+      --panel-border-color: rgba(101, 200, 198, 0.3);
+      /* Border color from primary accent */
+    }
+
     body {
-      background-color: #1a1a1a;
-      /* Darker background */
-      color: #dcdcdc;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: 'Roboto Mono', monospace;
       line-height: 1.8;
       max-width: 800px;
@@ -22,110 +41,189 @@
       padding: 2rem;
     }
 
+    /* --- Typography with Glow Effect --- */
     h1,
-    h2,
-    h3 {
+    h2 {
       font-family: 'VT323', monospace;
-      color: #7b68ee;
-      /* New accent color */
+      color: var(--primary-accent);
+      text-shadow: 0 0 4px var(--primary-glow), 0 0 8px var(--primary-glow);
       margin-top: 2rem;
       margin-bottom: 1rem;
     }
 
+    h3 {
+      font-family: 'VT323', monospace;
+      color: var(--secondary-accent);
+      text-shadow: 0 0 4px var(--secondary-glow), 0 0 8px var(--secondary-glow);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      font-family: 'VT323', monospace;
+      color: var(--tertiary-accent);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+
     h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       text-align: center;
-      /* Reduced bottom margin */
-      margin-bottom: 0rem;
+      margin-bottom: 0;
+      position: relative;
+      animation: flicker 5s infinite linear;
     }
 
     h2 {
-      font-size: 2rem;
-      border-bottom: 1px solid #444;
-      /* Slightly lighter border */
+      font-size: 2.5rem;
       padding-bottom: 0.5rem;
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
 
     a {
-      color: #7b68ee;
-      /* New accent color for links */
+      color: var(--primary-accent);
       text-decoration: none;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 4px var(--primary-glow);
     }
 
     a:hover {
-      text-decoration: underline;
+      color: var(--secondary-accent);
+      text-decoration: none;
+      text-shadow: 0 0 8px var(--secondary-glow), 0 0 16px var(--secondary-glow);
+      filter: brightness(1.2);
     }
 
     ul {
-      list-style-type: '> ';
+      list-style-type: '>> ';
       padding-left: 1.5rem;
+    }
+
+    ul li::marker {
+      color: var(--secondary-accent);
+      text-shadow: 0 0 4px var(--secondary-glow);
     }
 
     li {
       margin-bottom: 0.5rem;
     }
 
-    .section-divider {
-      border: 0;
-      height: 1px;
-      background-image: linear-gradient(to right,
-          rgba(0, 0, 0, 0),
-          #444,
-          rgba(0, 0, 0, 0));
-      margin: 3rem 0;
-    }
-
+    /* --- Header and Logo Styling --- */
     .header-logo {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
 
     .logo-placeholder {
       display: block;
-      /* Removed bottom margin */
       margin: 0 auto;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 2px var(--primary-accent)) drop-shadow(0 0 8px var(--primary-glow));
     }
 
+    .logo-placeholder:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 3px var(--primary-accent)) drop-shadow(0 0 12px var(--primary-glow));
+    }
+
+    /* --- Content Sections as Holographic Panels --- */
+    section {
+      background-color: var(--panel-bg-color);
+      border: 1px solid var(--panel-border-color);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      box-shadow: 0 0 20px rgba(101, 200, 198, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    section:hover {
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 30px rgba(101, 200, 198, 0.2);
+    }
+
+    /* --- Contact Info --- */
     .contact-info {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
+      gap: 2rem;
+      margin-top: 1.5rem;
     }
 
     .contact-info a {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: 1.1rem;
     }
 
+    /* --- GIF Container --- */
     .gif-container {
       display: flex;
       justify-content: center;
-      /* Horizontally centers the GIFs */
       flex-wrap: wrap;
-      /* Allows GIFs to wrap to the next line on smaller screens */
       gap: 1rem;
-      /* Adds some space between the GIFs */
       margin-top: 3rem;
-      /* Adds space above the GIFs */
+    }
+
+    .gif-container img {
+      border-radius: 8px;
+      border: 1px solid var(--panel-border-color);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .gif-container img:hover {
+      opacity: 1;
+      transform: scale(1.05);
+      border-color: var(--primary-accent);
+    }
+
+    /* --- Animations --- */
+    @keyframes flicker {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.9;
+      }
+
+      52% {
+        opacity: 1;
+      }
+
+      54% {
+        opacity: 0.8;
+      }
+
+      56% {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- --- HEADER HTML HAS BEEN REARRANGED --- -->
+  <!-- --- HEADER: Now with character logo --- -->
   <header class="header-logo">
     <h1>[ AMi ]</h1>
-    <img src="logo2.png" alt="Ami Logo" class="logo-placeholder"
-      onerror="this.onerror=null;this.src='https://placehold.co/150x150/7b68ee/FFFFFF?text=Logo';" />
+    <!-- Changed src to the new uploaded image -->
+    <img src="Antonina.png" alt="Ami Logo" class="logo-placeholder"
+      onerror="this.onerror=null;this.src='https://placehold.co/180x180/18191A/E1E1D6?text=LOGO';" />
   </header>
 
   <main>
@@ -133,26 +231,17 @@
     <section id="about">
       <h2>whoami</h2>
       <p>
-        Hello! I'm Ami, a cybersecurity student with a
-        strong foundation in IT support and project
-        management principles. My journey into tech
-        started with a curiosity for how things work,
-        which quickly evolved into a passion for securing
-        the systems that power our world.
+        Hi, I'm Ami. I started in tech with a simple question: 'How does this work?' That curiosity led me from IT
+        support to a passion for cybersecurity. I enjoy breaking down systems to understand them, and then building them
+        back stronger.
       </p>
       <p>
-        Through my certifications, I've built a solid
-        technical skill set and a strategic understanding
-        of IT service management. I am now channeling this
-        diverse background into cybersecurity and actively
-        seeking opportunities to apply my skills in a
-        real-world setting.
+        With a foundation in IT and project management, I'm ready to take on new challenges and help secure the digital
+        world.
       </p>
     </section>
 
-    <hr class="section-divider" />
-
-    <!-- Certifications -->
+    <!-- Certifications Section -->
     <section id="certifications">
       <h2>certifications</h2>
       <ul>
@@ -179,9 +268,7 @@
       </ul>
     </section>
 
-    <hr class="section-divider" />
-
-    <!-- Projects -->
+    <!-- Projects Section -->
     <section id="projects">
       <h2>projects</h2>
       <h3>Network Honeypot Implementation</h3>
@@ -200,7 +287,7 @@
         </li>
         <li>
           Logged all interaction data, including IP
-          addresses, commands used, and payloads, and other stuff.
+          addresses, commands used, and payloads.
         </li>
         <li>
           Configured firewall rules to safely isolate the
@@ -218,9 +305,7 @@
       </p>
     </section>
 
-    <hr class="section-divider" />
-
-    <!-- Skills -->
+    <!-- Skills Section -->
     <section id="skills">
       <h2>skills</h2>
       <p>
@@ -232,9 +317,7 @@
       </p>
     </section>
 
-    <hr class="section-divider" />
-
-    <!-- Contact -->
+    <!-- Contact Section -->
     <section id="contact">
       <h2>connect</h2>
       <p style="text-align: center">
@@ -243,11 +326,11 @@
       </p>
       <div class="contact-info">
         <a href="mailto:ami.cheri00@gmail.com">
-          <i data-lucide="mail" class="w-5 h-5"></i>
+          <i data-lucide="mail"></i>
           Email
         </a>
-        <a href="https://github.com/am1kyu">
-          <i data-lucide="github" class="w-5 h-5"></i>
+        <a href="https://github.com/am1kyu" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="github"></i>
           GitHub
         </a>
       </div>
@@ -255,17 +338,17 @@
 
     <div class="gif-container">
       <img src="./ethicalhacker.gif" width="200" alt="Ethical Hacker GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/0a0a14/dcdcdc?text=GIF';" />
       <img src="./cmmd.gif" width="200" alt="Command Line GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/0a0a14/dcdcdc?text=GIF';" />
       <img src="./night.gif" width="200" alt="Night GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/0a0a14/dcdcdc?text=GIF';" />
       <img src="./tabs.gif" width="200" alt="Tabs GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/0a0a14/dcdcdc?text=GIF';" />
       <img src="./datadefender.gif" width="200" alt="Data Defender GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/0a0a14/dcdcdc?text=GIF';" />
       <img src="./waters.gif" width="200" alt="Waters GIF"
-        onerror="this.onerror=null;this.src='https://placehold.co/200x113/1a1a1a/dcdcdc?text=GIF';" />
+        onerror="this.onerror=null;this.src='https://placehold.co/200x113/0a0a14/dcdcdc?text=GIF';" />
     </div>
 
   </main>
