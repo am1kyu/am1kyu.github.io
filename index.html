@@ -216,17 +216,12 @@
 
     /* --- Blinkies Section --- */
     .blinkies-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
       gap: 0.75rem;
-      /* Re-added gap for spacing */
       margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--panel-border-color);
       max-width: 474px;
-      /* (150px * 3) + (12px * 2) = 474px */
       margin-left: auto;
       margin-right: auto;
     }
@@ -264,11 +259,6 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
-      }
-
-      .blinkies-container {
-        max-width: 312px;
-        /* (150px * 2) + 12px = 312px */
       }
     }
   </style>
@@ -369,7 +359,7 @@
       <div class="contact-info">
         <a href="mailto:ami.cheri00@gmail.com">
           <!-- Custom SVG Email Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="contact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" class="contact-icon">
             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
