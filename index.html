@@ -10,19 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* --- Root Variables for the new minimalist theme --- */
+    /* --- Root Variables for the new dark theme --- */
     :root {
-      --bg-color: #f8f9fa;
-      /* Soft off-white background */
-      --text-color: #343a40;
-      /* Dark charcoal text for readability */
-      --accent-color: #4db6ac;
+      --bg-color: #212529;
+      /* Deep charcoal background */
+      --text-color: #f8f9fa;
+      /* Soft off-white text */
+      --primary-accent-color: #4db6ac;
       /* Muted teal from the image */
-      --panel-bg-color: #ffffff;
-      /* Clean white for content panels */
-      --panel-border-color: #dee2e6;
-      /* Light gray for subtle borders */
-      --subtle-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --secondary-accent-color: #f48fb1;
+      /* Soft Rose for keywords */
+      --panel-bg-color: #2c3238;
+      /* Slightly lighter charcoal for panels */
+      --panel-border-color: #495057;
+      /* Muted gray for subtle borders */
+      --subtle-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       /* Soft shadow for depth */
     }
 
@@ -54,8 +56,8 @@
       text-align: center;
       margin-bottom: 0.5rem;
       line-height: 1.2;
-      color: var(--accent-color);
-      /* Use accent color for the main title */
+      color: var(--primary-accent-color);
+      /* Use primary accent color for the main title */
     }
 
     h2 {
@@ -66,8 +68,8 @@
 
     h3 {
       font-size: 1.5rem;
-      color: #495057;
-      /* Slightly lighter text for subheadings */
+      color: #ced4da;
+      /* Lighter gray for subheadings */
     }
 
     p {
@@ -75,14 +77,15 @@
     }
 
     a {
-      color: var(--accent-color);
+      color: var(--primary-accent-color);
       text-decoration: none;
       transition: all 0.2s ease-in-out;
       font-weight: 500;
     }
 
     a:hover {
-      filter: brightness(0.9);
+      color: var(--secondary-accent-color);
+      /* Change to rose on hover */
       text-decoration: underline;
     }
 
@@ -93,11 +96,17 @@
     }
 
     ul li::marker {
-      color: var(--accent-color);
+      color: var(--primary-accent-color);
     }
 
     li {
       margin-bottom: 0.5rem;
+    }
+
+    /* --- Keyword Accent Styling --- */
+    .keyword-accent {
+      color: var(--secondary-accent-color);
+      font-weight: 700;
     }
 
     /* --- Header and Logo Styling --- */
@@ -121,7 +130,7 @@
 
     .logo-placeholder:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
 
     /* --- Content Sections as clean cards --- */
@@ -136,7 +145,7 @@
     }
 
     section:hover {
-      border-color: var(--accent-color);
+      border-color: var(--primary-accent-color);
       transform: translateY(-5px);
     }
 
@@ -159,7 +168,7 @@
     .contact-icon {
       width: 24px;
       height: 24px;
-      stroke: var(--accent-color);
+      stroke: var(--primary-accent-color);
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
@@ -168,6 +177,8 @@
     }
 
     .contact-info a:hover .contact-icon {
+      stroke: var(--secondary-accent-color);
+      /* Change icon to rose on hover */
       transform: scale(1.1);
     }
 
@@ -200,7 +211,7 @@
     <h1>[ AMi ]</h1>
     <!-- Updated src to the new image and added a fallback -->
     <img src="Antonina.png" alt="Ami Logo" class="logo-placeholder"
-      onerror="this.onerror=null;this.src='https://placehold.co/180x180/f8f9fa/343a40?text=LOGO';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/180x180/212529/f8f9fa?text=LOGO';" />
   </header>
 
   <main>
@@ -208,9 +219,9 @@
     <section id="about">
       <h2>About Me</h2>
       <p>
-        Hello! I'm Ami, a cybersecurity student with a
-        strong foundation in IT support and project
-        management principles. My journey into tech
+        Hello! I'm Ami, a <span class="keyword-accent">cybersecurity</span> student with a
+        strong foundation in <span class="keyword-accent">IT support</span> and <span class="keyword-accent">project
+          management</span> principles. My journey into tech
         started with a curiosity for how things work,
         which quickly evolved into a passion for securing
         the systems that power our world.
@@ -218,11 +229,30 @@
       <p>
         Through my certifications, I've built a solid
         technical skill set and a strategic understanding
-        of IT service management. I am now channeling this
+        of <span class="keyword-accent">IT service management</span>. I am now channeling this
         diverse background into cybersecurity and actively
         seeking opportunities to apply my skills in a
         real-world setting.
       </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <h3>Security Concepts</h3>
+      <ul>
+        <li>Network Security & Segmentation</li>
+        <li>Vulnerability Assessment</li>
+        <li>Threat Intelligence & Analysis</li>
+        <li>Incident Response Principles</li>
+      </ul>
+      <h3>Tools & Technologies</h3>
+      <ul>
+        <li>Wireshark</li>
+        <li>Nmap</li>
+        <li>Linux/Unix Environments</li>
+        <li>Virtualization (VMware, VirtualBox)</li>
+      </ul>
     </section>
 
     <!-- Certifications Section -->
@@ -239,17 +269,23 @@
     <!-- Projects Section -->
     <section id="projects">
       <h2>Projects</h2>
+      <h3>Honeypot Deployment & Analysis</h3>
+      <p>
+        Deployed a low-interaction <span class="keyword-accent">honeypot</span> to capture and analyze
+        automated attack patterns. Monitored traffic, logged <span class="keyword-accent">intrusion
+          attempts</span>, and identified common exploits and attacker origins.
+      </p>
       <h3>Home Lab Network Segmentation</h3>
       <p>
-        Designed and implemented a segmented home network using VLANs to
+        Designed and implemented a segmented home network using <span class="keyword-accent">VLANs</span> to
         isolate IoT devices, a personal server, and guest access,
         enhancing security and network management.
       </p>
       <h3>Threat Analysis Report</h3>
       <p>
-        Conducted an in-depth analysis of the Log4j vulnerability,
-        detailing its mechanism, potential impact, and mitigation
-        strategies for different environments.
+        Conducted an in-depth analysis of the <span class="keyword-accent">Log4j vulnerability</span>,
+        detailing its mechanism, potential impact, and <span class="keyword-accent">mitigation
+          strategies</span> for different environments.
       </p>
     </section>
 
