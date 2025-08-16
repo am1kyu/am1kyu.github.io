@@ -7,7 +7,8 @@
   <title>Ami - Cybersecurity Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     /* --- Root Variables for the new dark theme --- */
@@ -18,14 +19,14 @@
       /* Soft off-white text */
       --primary-accent-color: #4db6ac;
       /* Muted teal from the image */
-      --secondary-accent-color: #f48fb1;
-      /* Soft Rose for keywords */
+      --secondary-accent-color: #b39ddb;
+      /* Soft lavender for keywords */
       --panel-bg-color: #2c3238;
       /* Slightly lighter charcoal for panels */
       --panel-border-color: #495057;
       /* Muted gray for subtle borders */
-      --subtle-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      /* Soft shadow for depth */
+      --title-bar-bg: var(--primary-accent-color);
+      --title-bar-text: var(--bg-color);
     }
 
     body {
@@ -44,15 +45,18 @@
     h2,
     h3,
     h4 {
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 500;
+      font-family: 'VT323', monospace;
+      /* Terminal font for headings */
+      font-weight: 400;
+      /* VT323 looks best at normal weight */
       color: var(--text-color);
       margin-top: 2rem;
       margin-bottom: 1rem;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 4rem;
+      /* Adjusted for VT323 font */
       text-align: center;
       margin-bottom: 0.5rem;
       line-height: 1.2;
@@ -60,14 +64,31 @@
       /* Use primary accent color for the main title */
     }
 
+    h1::after {
+      content: '_';
+      animation: blink 1s step-end infinite;
+      color: var(--primary-accent-color);
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
     h2 {
-      font-size: 2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--panel-border-color);
+      /* Base h2 styling is now handled in the section h2 selector */
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 2rem;
+      /* Adjusted for VT323 font */
       color: #ced4da;
       /* Lighter gray for subheadings */
     }
@@ -85,13 +106,13 @@
 
     a:hover {
       color: var(--secondary-accent-color);
-      /* Change to rose on hover */
+      /* Change to lavender on hover */
       text-decoration: underline;
     }
 
     ul {
-      list-style-type: square;
-      /* A cleaner list marker */
+      list-style-type: '$ ';
+      /* BASH-style list marker */
       padding-left: 1.5rem;
     }
 
@@ -124,29 +145,40 @@
       /* Rounded logo for a softer look */
       object-fit: cover;
       border: 3px solid var(--panel-border-color);
-      box-shadow: var(--subtle-shadow);
       transition: all 0.3s ease;
     }
 
     .logo-placeholder:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      border-color: var(--primary-accent-color);
     }
 
-    /* --- Content Sections as clean cards --- */
+    /* --- Content Sections as terminal sub-windows --- */
     section {
       background-color: var(--panel-bg-color);
       border: 1px solid var(--panel-border-color);
-      padding: 1.5rem 2rem;
-      border-radius: 12px;
+      padding: 3.5rem 2rem 1.5rem 2rem;
+      /* Top padding for title bar */
       margin-bottom: 2.5rem;
-      box-shadow: var(--subtle-shadow);
-      transition: all 0.3s ease;
+      border-radius: 0;
+      /* Sharp corners for window look */
+      position: relative;
+      /* Needed for positioning the title bar */
     }
 
-    section:hover {
-      border-color: var(--primary-accent-color);
-      transform: translateY(-5px);
+    /* The window title bar */
+    section h2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--title-bar-bg);
+      color: var(--title-bar-text);
+      padding: 0.25rem 1rem;
+      margin: 0;
+      font-size: 2.2rem;
+      /* Adjusted for VT323 font */
+      border-bottom: 1px solid var(--panel-border-color);
     }
 
     /* --- Contact Info --- */
@@ -178,8 +210,34 @@
 
     .contact-info a:hover .contact-icon {
       stroke: var(--secondary-accent-color);
-      /* Change icon to rose on hover */
+      /* Change icon to lavender on hover */
       transform: scale(1.1);
+    }
+
+    /* --- Blinkies Section --- */
+    .blinkies-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--panel-border-color);
+      /* New styles for 3x2 grid */
+      max-width: 300px;
+      /* (88px * 3) + (12px * 2) = 288px. 300px gives some room. */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .blinkies-container img {
+      border: 1px solid var(--panel-border-color);
+      transition: border-color 0.3s ease;
+    }
+
+    .blinkies-container img:hover {
+      border-color: var(--primary-accent-color);
     }
 
     /* Responsive Design */
@@ -189,10 +247,10 @@
       }
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
       }
 
-      h2 {
+      section h2 {
         font-size: 1.8rem;
       }
 
@@ -217,7 +275,7 @@
   <main>
     <!-- About Section -->
     <section id="about">
-      <h2>About Me</h2>
+      <h2>~/About_Me</h2>
       <p>
         Hello! I'm Ami, a <span class="keyword-accent">cybersecurity</span> student with a
         strong foundation in <span class="keyword-accent">IT support</span> and <span class="keyword-accent">project
@@ -238,7 +296,7 @@
 
     <!-- Skills Section -->
     <section id="skills">
-      <h2>Skills</h2>
+      <h2>./Skills</h2>
       <h3>Security Concepts</h3>
       <ul>
         <li>Network Security & Segmentation</li>
@@ -257,7 +315,7 @@
 
     <!-- Certifications Section -->
     <section id="certs">
-      <h2>Certifications</h2>
+      <h2>./Certifications</h2>
       <ul>
         <li>CompTIA A+</li>
         <li>CompTIA Project+</li>
@@ -268,7 +326,7 @@
 
     <!-- Projects Section -->
     <section id="projects">
-      <h2>Projects</h2>
+      <h2>./Projects</h2>
       <h3>Honeypot Deployment & Analysis</h3>
       <p>
         Deployed a low-interaction <span class="keyword-accent">honeypot</span> to capture and analyze
@@ -291,7 +349,7 @@
 
     <!-- Contact Section -->
     <section id="contact">
-      <h2>Contact</h2>
+      <h2>./Contact</h2>
       <p>Let's connect and build a more secure future together.</p>
       <div class="contact-info">
         <a href="mailto:youremail@example.com">
@@ -314,6 +372,22 @@
       </div>
     </section>
   </main>
+
+  <!-- Blinkies Section -->
+  <footer class="blinkies-container">
+    <img src="ethicalhacker.gif" alt="Blinkie: ethicalhacker.gif"
+      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=ethicalhacker.gif';" />
+    <img src="cmmd.gif" alt="Blinkie: cmmd.gif"
+      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=cmmd.gif';" />
+    <img src="night.gif" alt="Blinkie: night.gif"
+      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=night.gif';" />
+    <img src="tabs.gif" alt="Blinkie: tabs.gif"
+      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=tabs.gif';" />
+    <img src="datadefender.gif" alt="Blinkie: datadefender.gif"
+      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=datadefender.gif';" />
+    <img src="waters.gif" alt="Blinkie: waters.gif"
+      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=waters.gif';" />
+  </footer>
 
   <script>
     // Initialize Lucide icons
