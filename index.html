@@ -221,12 +221,12 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 0.75rem;
+      /* Re-added gap for spacing */
       margin-top: 3rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--panel-border-color);
-      /* New styles for 3x2 grid */
-      max-width: 300px;
-      /* (88px * 3) + (12px * 2) = 288px. 300px gives some room. */
+      max-width: 474px;
+      /* (150px * 3) + (12px * 2) = 474px */
       margin-left: auto;
       margin-right: auto;
     }
@@ -234,6 +234,12 @@
     .blinkies-container img {
       border: 1px solid var(--panel-border-color);
       transition: border-color 0.3s ease;
+      display: block;
+      /* Ensures no extra space below the image */
+      width: 150px;
+      /* Setting the new width */
+      height: 20px;
+      /* Setting the new height */
     }
 
     .blinkies-container img:hover {
@@ -258,6 +264,11 @@
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+      }
+
+      .blinkies-container {
+        max-width: 312px;
+        /* (150px * 2) + 12px = 312px */
       }
     }
   </style>
@@ -376,17 +387,17 @@
   <!-- Blinkies Section -->
   <footer class="blinkies-container">
     <img src="ethicalhacker.gif" alt="Blinkie: ethicalhacker.gif"
-      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=ethicalhacker.gif';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/150x20/2c3238/f8f9fa?text=ethicalhacker.gif';" />
     <img src="cmmd.gif" alt="Blinkie: cmmd.gif"
-      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=cmmd.gif';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/150x20/2c3238/f8f9fa?text=cmmd.gif';" />
     <img src="night.gif" alt="Blinkie: night.gif"
-      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=night.gif';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/150x20/2c3238/f8f9fa?text=night.gif';" />
     <img src="tabs.gif" alt="Blinkie: tabs.gif"
-      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=tabs.gif';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/150x20/2c3238/f8f9fa?text=tabs.gif';" />
     <img src="datadefender.gif" alt="Blinkie: datadefender.gif"
-      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=datadefender.gif';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/150x20/2c3238/f8f9fa?text=datadefender.gif';" />
     <img src="waters.gif" alt="Blinkie: waters.gif"
-      onerror="this.onerror=null;this.src='https://placehold.co/88x31/2c3238/f8f9fa?text=waters.gif';" />
+      onerror="this.onerror=null;this.src='https://placehold.co/150x20/2c3238/f8f9fa?text=waters.gif';" />
   </footer>
 
   <script>
