@@ -37,7 +37,7 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 2rem;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color: 0.3s, color 0.3s;
     }
 
     /* --- Typography with a softer, cleaner look --- */
@@ -181,6 +181,23 @@
       border-bottom: 1px solid var(--panel-border-color);
     }
 
+    /* --- Project Link Styling --- */
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      /* Add space before next project title */
+      font-weight: bold;
+    }
+
+    .project-link .cat-icon {
+      height: 1.2em;
+      /* Scales with font size */
+      width: auto;
+    }
+
     /* --- Contact Info --- */
     .contact-info {
       display: flex;
@@ -278,15 +295,12 @@
     <section id="about">
       <h2>~/About_Me</h2>
       <p>
-      <p>
         I’m Ami, a <span class="keyword-accent">Cybersecurity</span> student at WGU.
         Background in <span class="keyword-accent">IT support</span> and <span class="keyword-accent">project
           management</span>.
         I practice through <span class="keyword-accent">CTFs</span>, focusing on <span class="keyword-accent">threat
           analysis</span> and
         <span class="keyword-accent">system hardening</span>.
-      </p>
-
       </p>
 
       <p>
@@ -334,22 +348,40 @@
       <h2>./Projects</h2>
       <h3>Honeypot Deployment & Analysis</h3>
       <p>
-        Deployed a low-interaction <span class="keyword-accent">honeypot</span> to capture and analyze
-        automated attack patterns. Monitored traffic, logged <span class="keyword-accent">intrusion
-          attempts</span>, and identified common exploits and attacker origins.
+        Deployed a <span class="keyword-accent">Cowrie honeypot</span> on a <span class="keyword-accent">cloud
+          VPS</span> to capture and analyze automated <span class="keyword-accent">SSH and Telnet attacks</span>,
+        focusing on attacker <span class="keyword-accent">TTPs</span> and captured <span class="keyword-accent">malware
+          payloads</span>.
       </p>
+      <a href="https://github.com/am1kyu/honeypot" target="_blank" class="project-link">
+        <img src="link.png" alt="Link icon" class="cat-icon"
+          onerror="this.onerror=null;this.src='https://placehold.co/22x12/2c3238/4db6ac?text=^._.^';" />
+        <span>View Lab on GitHub &rarr;</span>
+      </a>
+
       <h3>Home Lab Network Segmentation</h3>
       <p>
         Designed and implemented a segmented home network using <span class="keyword-accent">VLANs</span> to
         isolate IoT devices, a personal server, and guest access,
         enhancing security and network management.
       </p>
+      <a href="https://github.com/am1kyu/home-lab-network-segmentation" target="_blank" class="project-link">
+        <img src="link.png" alt="Link icon" class="cat-icon"
+          onerror="this.onerror=null;this.src='https://placehold.co/22x12/2c3238/4db6ac?text=^._.^';" />
+        <span>View Lab on GitHub &rarr;</span>
+      </a>
+
       <h3>Threat Analysis Report</h3>
       <p>
         Conducted an in-depth analysis of the <span class="keyword-accent">Log4j vulnerability</span>,
         detailing its mechanism, potential impact, and <span class="keyword-accent">mitigation
           strategies</span> for different environments.
       </p>
+      <a href="https://github.com/am1kyu/threat-analysis-report" target="_blank" class="project-link">
+        <img src="link.png" alt="Link icon" class="cat-icon"
+          onerror="this.onerror=null;this.src='https://placehold.co/22x12/2c3238/4db6ac?text=^._.^';" />
+        <span>View Report on GitHub &rarr;</span>
+      </a>
     </section>
 
     <!-- Contact Section -->
